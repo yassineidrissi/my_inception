@@ -24,8 +24,8 @@ services:
       #   DB_USER: ${DB_USER}
       #   DB_PASS: ${DB_PASS}
       #   DB_ROOT: ${DB_ROOT}
-    # ports:
-      # - "3306:3306"
+    ports:
+      - "3306:3306"
   #   volumes:
   #     -db-volume: /var/lib/mysql
   #   restart: always

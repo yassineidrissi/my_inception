@@ -16,9 +16,9 @@ services:
   mariadb:
     build: requirements/mariadb/.
     container_name: mariadb
+    restart: always
     env_file:
-      - .env
-    
+      - .env 
       # args:
       #   DB_NAME: ${DB_NAME}
       #   DB_USER: ${DB_USER}
@@ -26,6 +26,13 @@ services:
       #   DB_ROOT: ${DB_ROOT}
     ports:
       - "3306:3306"
-  #   volumes:
-  #     -db-volume: /var/lib/mysql
-  #   restart: always
+    volumes:
+      - maria_volume:/var/lib/mysql
+  #
+volumes:
+  maria_volume:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/yaidriss42/data/maria-volume

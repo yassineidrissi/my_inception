@@ -15,5 +15,10 @@ down:
 
 logs:
 	$(DC) logs -f
+clean:
+	$(DC) down --rmi all
+
+fclean: clean
+	$(DC) down --volumes --remove-orphans
 
 .PHONY: build up down logs

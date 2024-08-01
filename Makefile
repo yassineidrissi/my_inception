@@ -6,6 +6,8 @@ DC= docker-compose -f srcs/docker-compose.yml
 # Targets
 build:
 	$(DC) build
+	mkdir -p ~/data/maria-volume
+	mkdir -p ~/data/wordpress-volume
 
 up:
 	$(DC) up -d

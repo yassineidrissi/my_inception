@@ -13,6 +13,8 @@ services:
     #   - ./requirements/nginx/tools:/etc/nginx/ssl/
     #   - /home/yaidriss42/Desktop/simple_docker_nginx_html/public/html:/var/www/
     restart: always
+    volumes:
+      - wordpress_volume:/var/www/html
   mariadb:
     build: requirements/mariadb/.
     container_name: mariadb
@@ -28,7 +30,20 @@ services:
       - "3306:3306"
     volumes:
       - maria_volume:/var/lib/mysql
-  #
+  wordpress:
+    build: requirements/wordpress/.
+    container_name: wordpress
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "9000:9000"
+    depends_on:
+      - mariadb
+    volumes:
+      - wordpress_volume:/usr/share/wordpress
+    # networks:
+    #   - wordpress
 volumes:
   maria_volume:
     driver: local
@@ -36,3 +51,9 @@ volumes:
       o: bind
       type: none
       device: /home/yaidriss42/data/maria-volume
+  wordpress_volume:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/yaidriss42/data/wordpress-volume

@@ -32,8 +32,8 @@ services:
       #   DB_USER: ${DB_USER}
       #   DB_PASS: ${DB_PASS}
       #   DB_ROOT: ${DB_ROOT}
-    ports:
-      - "3306:3306"
+    expose:
+      - 3306
     volumes:
       - maria_volume:/var/lib/mysql
     networks:
@@ -44,8 +44,8 @@ services:
     restart: always
     env_file:
       - .env
-    ports:
-      - "9000:9000"
+    expose:
+      - 9000
     depends_on:
       - mariadb
     volumes:

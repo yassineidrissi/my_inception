@@ -1,7 +1,7 @@
 #!bin/sh
 
-cp -rf /usr/share/wordpress/* /var/www/html/
-cp /usr/share/wordpress/wp-config-sample.php /var/www/html/wp-config.php
+# cp -rf /usr/share/wordpress/* /var/www/html/
+# cp  wp-config.php /var/www/html/wp-config.php
 
 # if [ ! -f "/var/www/html/wp-config.php" ]; then
 # cat << EOF > /var/www/html/wp-config.php
@@ -25,15 +25,19 @@ cp /usr/share/wordpress/wp-config-sample.php /var/www/html/wp-config.php
 # require_once ABSPATH . 'wp-settings.php';
 # EOF
 # fi
+sleep 5
+
+cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
 
 wp config set DB_NAME ${DB_NAME} --allow-root --path=/var/www/html
 wp config set DB_USER ${DB_USER} --allow-root --path=/var/www/html
 wp config set DB_PASSWORD ${DB_PASS} --allow-root --path=/var/www/html
-wp config set DB_HOST mariadb --allow-root --path=/var/www/html
+wp config set DB_HOST mariadb:3306 --allow-root --path=/var/www/html
 
-wp core install --allow-root --path=/var/www/html --url=${DOMAIN_NAME} --title=bati --admin_user=${WP_ROOT} --admin_password=${ROOT_PASS} --admin_email=${ROOT_EMAIL} --skip-email
+# wp config create --dbname=${DB_NAME} --dbuser=${DB_USER} --dbpass=${DB_PASS} --dbhost=wordpress
+wp core install --allow-root --url=${DOMAIN_NAME} --title=bati --admin_user=${WP_ROOT} --admin_password=${ROOT_PASS} --admin_email=${ROOT_EMAIL}  --path=/var/www/html
 wp user create ${WP_USER} ${WP_EMAIL} --role=author --user_pass=${WP_PASS} --allow-root --path=/var/www/html
 
-wp core insta
+# chmod -R 777 /var/www/html/wp-content/
 
 exec php-fpm8.2 -F

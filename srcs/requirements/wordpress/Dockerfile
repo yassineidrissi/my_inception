@@ -11,10 +11,11 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 RUN chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
 
 EXPOSE 9000
-# COPY ./tools/stup.sh .
+COPY ./tools/stup_wp.sh .
+COPY ./conf/www.conf /etc/php/8.2/fpm/pool.d/
 
-# RUN chmod +x stup.sh
+RUN chmod +x stup_wp.sh
 
-# CMD ["./stup.sh"]
+CMD ["./stup_wp.sh"]
 
-CMD ["php-fpm8.2", "-F"]
+# CMD ["php-fpm8.2", "-F"]

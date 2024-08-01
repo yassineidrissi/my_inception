@@ -22,5 +22,6 @@ clean:
 
 fclean: clean
 	$(DC) down --volumes --remove-orphans
+	sudo rm -rf ~/data
 
 .PHONY: build up down logs

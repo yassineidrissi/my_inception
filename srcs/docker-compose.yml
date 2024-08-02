@@ -13,7 +13,6 @@ services:
     ports:
       - "443:443"
     restart: always
-    #! recheck the adress of the volumes
     volumes:
       - wordpress_volume:/var/www/html
     networks:

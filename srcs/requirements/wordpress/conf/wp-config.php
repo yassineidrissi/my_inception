@@ -18,20 +18,20 @@
 * @package WordPress
 */
 // ** MySQL settings - You can get this info from your web host ** //
-//! /** The name of the database for WordPress */
-// define( 'DB_NAME', 'database_name_here' );
-// /** MySQL database username */
-// define( 'DB_USER', 'username_here' );
-// /** MySQL database password */
-// define( 'DB_PASSWORD', 'password_here' );
-// /** MySQL hostname */
-// define( 'DB_HOST', 'localhost' );
-/** The name of the database for WordPress */
-define( 'DB_NAME', getenv('DB_NAME') );
+//** The name of the database for WordPress */
+define( 'DB_NAME', 'database_name_here' );
 /** MySQL database username */
-define( 'DB_USER', getenv('DB_USER') );
+define( 'DB_USER', 'username_here' );
 /** MySQL database password */
-define( 'DB_PASSWORD', getenv('DB_PASS') );
+define( 'DB_PASSWORD', 'password_here' );
+/** MySQL hostname */
+// define( 'DB_HOST', 'localhost' );
+// /** The name of the database for WordPress */
+// define( 'DB_NAME', getenv('DB_NAME') );
+// /** MySQL database username */
+// define( 'DB_USER', getenv('DB_USER') );
+// /** MySQL database password */
+// define( 'DB_PASSWORD', getenv('DB_PASS') );
 /** MySQL hostname */
 define( 'DB_HOST', 'mariadb' );
 /** Database Charset to use in creating database tables. */

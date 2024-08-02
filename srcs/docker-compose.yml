@@ -12,11 +12,8 @@ services:
       - wordpress
     ports:
       - "443:443"
-    # volumes:
-    #   - ./requirements/nginx/conf/:/etc/nginx/http.d/
-    #   - ./requirements/nginx/tools:/etc/nginx/ssl/
-    #   - /home/yaidriss/Desktop/simple_docker_nginx_html/public/html:/var/www/
     restart: always
+    #! recheck the adress of the volumes
     volumes:
       - wordpress_volume:/var/www/html
     networks:
